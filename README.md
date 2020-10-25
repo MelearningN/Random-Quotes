@@ -1,13 +1,11 @@
-### **Random Quote Generator**
+# **Random Quote Generator**
 
-==========================================
 
-### Running project:
+## Project Description:
 
-Open index.html in any browser
+This project generates random quotes every 3 seconds from list of 5 different quotes. Along with that it changes the background color.
+>Note: There is a show another quote button which immediately generates another random quote.
 
-==========================================
-
-### Gify:
+## Gify:
 
 ![](quotes.gif)
