@@ -1,65 +1,70 @@
-/******************************************
-Treehouse FSJS Techdegree:
-project 1 - A Random Quote Generator
-******************************************/
-
-// For assistance:
-// Check the "Project Resources" section of the project instructions
-// Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
-
-
 const quotes = [
     {
         quote: 'It is beyond a doubt that all our knowledge begins with experience',
-        author: 'Immanuel Kant',
+        source: 'Immanuel Kant',
         citation: 'Brain Quotes',
         year: 1804
     },
     {
         quote: 'Government of the people, by the people, for the people, shall not perish from the Earth',
-        author: 'Abraham Lincoln',
+        source: 'Abraham Lincoln',
         citation: 'Brain Quotes',
         year: 1865
 
     },
     {
         quote: 'The first draft is just you telling yourself the story',
-        author: 'Terry Pratchett'
+        source: 'Terry Pratchett'
     },
     {
         quote: 'I have never started a poem yet whose end I knew. Writing a poem is discovering',
-        author: 'Robert Frost',
+        source: 'Robert Frost',
         tag: 'london'
     }, {
         quote: 'It is perfectly okay to write garbage as long as you edit brilliantly',
-        author: 'C. J. Cherryh',
+        source: 'C. J. Cherryh',
         year: 1800
     }
 ]
 
+// function returning random quote object
 const getRandomQuote = (randomNumber) => quotes[randomNumber]
 
 var randomQuote = getRandomQuote(quotes)
 
+// Calling printQuote every after 3 seconds
 setInterval(function () {
     printQuote()
 }, 3000);
 
+// Adds random quotes to the DOM
 const printQuote = () => {
+    // creating random number from 1 to 5. Created here so that can used for print
+    // random quotes and background color
     var randomNumber = Math.floor(Math.random() * quotes.length)
+
+    // creates a random background color
     document.getElementById('page-body').setAttribute('style', `background-color: rgb(${
-        58 + randomNumber * 100
-    }, 93, 208)`)
+        randomNumber * 100
+    }
+    , ${
+        randomNumber * 50
+    }, ${
+        randomNumber * 50
+    }`)
+
     let randomQuote = getRandomQuote(randomNumber)
 
-    document.getElementById('container').innerHTML = `<div id="quote-box" class="quote-box"> <p id="quote" class="quote">${
+    // adding random created quotes to the DOM
+    document.getElementById('container').innerHTML = `<div id="quote-box" class="quote-box"> 
+     <p id="quote" class="quote">${
         randomQuote.quote
     }</p>${
         randomQuote.tag ? `<span>**${
             randomQuote.tag
         } </span>` : ''
     } <p id="source"class="source">${
-        randomQuote.author
+        randomQuote.source
     }${
         randomQuote.citation ? `<span id="citation"class="citation">${
             randomQuote.citation
@@ -70,11 +75,5 @@ const printQuote = () => {
         }</span>` : ''
     }</p></div>`
 }
-
-
-/***
- * click event listener for the print quote button
- * DO NOT CHANGE THE CODE BELOW!!
-***/
 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
